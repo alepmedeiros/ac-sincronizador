@@ -1,0 +1,118 @@
+object Form7: TForm7
+  Left = 0
+  Top = 0
+  Caption = 'Form7'
+  ClientHeight = 338
+  ClientWidth = 547
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -19
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  OnCreate = FormCreate
+  TextHeight = 25
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 547
+    Height = 338
+    Align = alClient
+    BevelOuter = bvNone
+    Padding.Left = 5
+    Padding.Top = 5
+    Padding.Right = 5
+    Padding.Bottom = 5
+    TabOrder = 0
+    ExplicitLeft = 8
+    ExplicitTop = 8
+    ExplicitWidth = 650
+    ExplicitHeight = 428
+    object Panel3: TPanel
+      Left = 5
+      Top = 5
+      Width = 537
+      Height = 55
+      Align = alTop
+      BevelOuter = bvNone
+      TabOrder = 0
+      ExplicitWidth = 640
+      object Label2: TLabel
+        Left = 0
+        Top = 0
+        Width = 537
+        Height = 25
+        Align = alTop
+        Caption = 'Evento'
+        ExplicitWidth = 57
+      end
+      object SpeedButton1: TSpeedButton
+        Left = 504
+        Top = 25
+        Width = 33
+        Height = 30
+        Align = alRight
+        Caption = '+'
+        OnClick = SpeedButton1Click
+      end
+      object edtDataBase: TEdit
+        Left = 0
+        Top = 25
+        Width = 504
+        Height = 30
+        Align = alClient
+        BorderStyle = bsNone
+        TabOrder = 0
+        ExplicitWidth = 497
+      end
+    end
+    object Panel15: TPanel
+      Left = 5
+      Top = 286
+      Width = 537
+      Height = 47
+      Align = alBottom
+      BevelOuter = bvNone
+      TabOrder = 1
+      ExplicitTop = 376
+      ExplicitWidth = 640
+      object Button1: TButton
+        Left = 418
+        Top = 0
+        Width = 119
+        Height = 47
+        Align = alRight
+        Caption = 'Salvar'
+        TabOrder = 0
+        ExplicitLeft = 521
+      end
+      object Button2: TButton
+        Left = 0
+        Top = 0
+        Width = 75
+        Height = 47
+        Align = alLeft
+        Caption = 'Fechar'
+        TabOrder = 1
+      end
+    end
+    object Memo1: TMemo
+      AlignWithMargins = True
+      Left = 5
+      Top = 65
+      Width = 537
+      Height = 216
+      Margins.Left = 0
+      Margins.Top = 5
+      Margins.Right = 0
+      Margins.Bottom = 5
+      Align = alClient
+      BevelInner = bvNone
+      BevelOuter = bvNone
+      BorderStyle = bsNone
+      TabOrder = 2
+      ExplicitTop = 60
+      ExplicitHeight = 226
+    end
+  end
+end

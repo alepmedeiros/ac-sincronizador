@@ -1,0 +1,105 @@
+unit sincronizador_server.conexao;
+
+interface
+
+uses
+  FireDAC.Stan.Intf,
+  FireDAC.Stan.Option,
+  FireDAC.Stan.Error,
+  FireDAC.UI.Intf,
+  FireDAC.Phys.Intf,
+  FireDAC.Stan.Def,
+  FireDAC.Stan.Pool,
+  FireDAC.Stan.Async,
+  FireDAC.Phys,
+  FireDAC.VCLUI.Wait,
+  FireDAC.Stan.Param,
+  FireDAC.DatS,
+  FireDAC.DApt.Intf,
+  FireDAC.DApt,
+  FireDAC.Comp.Client,
+  Data.DB,
+  FireDAC.Comp.DataSet,
+  FireDAC.Phys.PGDef,
+  FireDAC.Phys.PG,
+  sincronizador_server.interfaces;
+
+type
+  TConexao = class(TInterfacedObject, IConexao)
+  private
+    FConn: TFDConnection;
+    FQuery: TFDQuery;
+    FDriver: TFDPhysPgDriverLink;
+    FConf: IConfiguracao;
+
+    constructor Create;
+    destructor Destroy; override;
+  public
+    class function New: IConexao;
+
+    function SQL(Value: String): IConexao;
+    function Params(aParams: String; aValue: Variant): IConexao;
+    function Open: IConexao;
+    function ExecSQL: IConexao;
+    function DataSet: TDataSet;
+  end;
+
+implementation
+
+{ TConexao }
+
+constructor TConexao.Create;
+begin
+  FConn := TFDConnection.Create(nil);
+  FQuery := TFDQuery.Create(FConn);
+  FDriver := TFDPhysPgDriverLink.Create(FConn);
+  FConf := TConfiguracao.New;
+
+  FConn.Params.DriverID := 'PG';
+  FConn.Params.Database := lDataBase;
+  FConn.Params.Add('Server='+lServer);
+  FConn.Params.UserName := lUserName;
+  FConn.Params.Password := lPassword;
+  FConn.Params.Add('PORT='+lPort);
+  FConn.Params.Add('CharacterSet=utf8');
+  FConn.Params.Add('MetaDefSchema=public');
+  FConn.Connected;
+end;
+
+function TConexao.DataSet: TDataSet;
+begin
+
+end;
+
+destructor TConexao.Destroy;
+begin
+
+  inherited;
+end;
+
+function TConexao.ExecSQL: IConexao;
+begin
+
+end;
+
+class function TConexao.New: IConexao;
+begin
+
+end;
+
+function TConexao.Open: IConexao;
+begin
+
+end;
+
+function TConexao.Params(aParams: String; aValue: Variant): IConexao;
+begin
+
+end;
+
+function TConexao.SQL(Value: String): IConexao;
+begin
+
+end;
+
+end.

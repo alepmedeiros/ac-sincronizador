@@ -1,0 +1,64 @@
+unit sincronizador_server.controller;
+
+interface
+
+uses
+  Horse;
+
+type
+  IController = interface
+    function Start: IController;
+    function Stop: IController;
+    function Registrar: IController;
+    function Status: Integer;
+    function Retorno: String;
+  end;
+
+  TController = class(TInterfacedObject, IController)
+  private
+    constructor Create;
+  public
+    class function New: IController;
+
+    function Start: IController;
+    function Stop: IController;
+    function Registrar: IController;
+    function Retorno: String;
+  end;
+
+implementation
+
+{ TController }
+
+constructor TController.Create;
+begin
+  if THorse.IsRunning then
+    Self.Stop;
+end;
+
+class function TController.New: IController;
+begin
+  Result := Self.Create;
+end;
+
+function TController.Registrar: IController;
+begin
+
+end;
+
+function TController.Retorno: String;
+begin
+
+end;
+
+function TController.Start: IController;
+begin
+
+end;
+
+function TController.Stop: IController;
+begin
+
+end;
+
+end.

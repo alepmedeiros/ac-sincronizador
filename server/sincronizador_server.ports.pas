@@ -1,0 +1,45 @@
+unit sincronizador_server.ports;
+
+interface
+
+uses
+  sincronizador_server.interfaces;
+
+type
+  TPorts = class(TInterfacedObject, IPorts)
+  private
+    FConn: IConexao;
+    FConf: IConfiguracao;
+  public
+    class function New: IPorts;
+
+    function Configuracao: IConfiguracao;
+    function Conexao: IConexao;
+  end;
+
+implementation
+
+uses
+  sincronizador_server.Configuracao,
+  sincronizador_server.Conexao;
+
+function TPorts.Conexao: IConexao;
+begin
+  if not Assigned(FConn) then
+    FConn := TConexao.New(Self.Configuracao);
+  Result := FConn;
+end;
+
+function TPorts.Configuracao: IConfiguracao;
+begin
+  if not Assigned(FConf) then
+    FConf := TConfiguracao.New;
+  Result := FConf;
+end;
+
+class function TPorts.New: IPorts;
+begin
+  Result := Self.Create;
+end;
+
+end.

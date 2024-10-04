@@ -1,0 +1,84 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{3F2048B3-5575-4913-9FBA-4C1276907CD5}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="server\sincronizador_server.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="agent\agent_pdv.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\firedac_monitor\agente\agente.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\firedac_monitor\sincronizador\sincronizador.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\ac-pdv\ACPDV.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="sincronizador_server">
+        <MSBuild Projects="server\sincronizador_server.dproj"/>
+    </Target>
+    <Target Name="sincronizador_server:Clean">
+        <MSBuild Projects="server\sincronizador_server.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="sincronizador_server:Make">
+        <MSBuild Projects="server\sincronizador_server.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="agent_pdv">
+        <MSBuild Projects="agent\agent_pdv.dproj"/>
+    </Target>
+    <Target Name="agent_pdv:Clean">
+        <MSBuild Projects="agent\agent_pdv.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="agent_pdv:Make">
+        <MSBuild Projects="agent\agent_pdv.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="agente">
+        <MSBuild Projects="..\firedac_monitor\agente\agente.dproj"/>
+    </Target>
+    <Target Name="agente:Clean">
+        <MSBuild Projects="..\firedac_monitor\agente\agente.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="agente:Make">
+        <MSBuild Projects="..\firedac_monitor\agente\agente.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="sincronizador">
+        <MSBuild Projects="..\firedac_monitor\sincronizador\sincronizador.dproj"/>
+    </Target>
+    <Target Name="sincronizador:Clean">
+        <MSBuild Projects="..\firedac_monitor\sincronizador\sincronizador.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="sincronizador:Make">
+        <MSBuild Projects="..\firedac_monitor\sincronizador\sincronizador.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ACPDV">
+        <MSBuild Projects="..\ac-pdv\ACPDV.dproj"/>
+    </Target>
+    <Target Name="ACPDV:Clean">
+        <MSBuild Projects="..\ac-pdv\ACPDV.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ACPDV:Make">
+        <MSBuild Projects="..\ac-pdv\ACPDV.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="sincronizador_server;agent_pdv;agente;sincronizador;ACPDV"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="sincronizador_server:Clean;agent_pdv:Clean;agente:Clean;sincronizador:Clean;ACPDV:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="sincronizador_server:Make;agent_pdv:Make;agente:Make;sincronizador:Make;ACPDV:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

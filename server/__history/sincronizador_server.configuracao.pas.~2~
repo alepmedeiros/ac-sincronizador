@@ -1,0 +1,87 @@
+unit sincronizador_server.configuracao;
+
+interface
+
+uses
+  LocalCache4D,
+  sincronizador_server.interfaces;
+
+type
+  TConfiguracao = class(TInterfacedObject, IConfiguracao)
+  private
+    FCache: ILo
+  public
+    class function New: IConfiguracao;
+
+    function DataBase(Value: String): IConfiguracao;
+    function Server(Value: String): IConfiguracao;
+    function UserName(Value: String): IConfiguracao;
+    function Password(Value: String): IConfiguracao;
+    function Port(Value: String): IConfiguracao;
+    function LibHome(Value: String): IConfiguracao;
+    function Lib(Value: String): IConfiguracao;
+    function DriverId(Value: string): IConfiguracao;
+    function CharacterSet(Value: string): IConfiguracao;
+    function MetaDefSchema(Value: String): IConfiguracao;
+  end;
+
+implementation
+
+{ TConfiguracao }
+
+function TConfiguracao.CharacterSet(Value: string): IConfiguracao;
+begin
+
+end;
+
+function TConfiguracao.DataBase(Value: String): IConfiguracao;
+begin
+
+end;
+
+function TConfiguracao.DriverId(Value: string): IConfiguracao;
+begin
+
+end;
+
+function TConfiguracao.Lib(Value: String): IConfiguracao;
+begin
+
+end;
+
+function TConfiguracao.LibHome(Value: String): IConfiguracao;
+begin
+
+end;
+
+function TConfiguracao.MetaDefSchema(Value: String): IConfiguracao;
+begin
+
+end;
+
+class function TConfiguracao.New: IConfiguracao;
+begin
+
+end;
+
+function TConfiguracao.Password(Value: String): IConfiguracao;
+begin
+
+end;
+
+function TConfiguracao.Port(Value: String): IConfiguracao;
+begin
+
+end;
+
+function TConfiguracao.Server(Value: String): IConfiguracao;
+begin
+
+end;
+
+function TConfiguracao.UserName(Value: String): IConfiguracao;
+begin
+
+end;
+
+end.

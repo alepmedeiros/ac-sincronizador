@@ -1,0 +1,126 @@
+unit sincronizador_server.conexao;
+
+interface
+
+uses
+  FireDAC.Stan.Intf,
+  FireDAC.Stan.Option,
+  FireDAC.Stan.Error,
+  FireDAC.UI.Intf,
+  FireDAC.Phys.Intf,
+  FireDAC.Stan.Def,
+  FireDAC.Stan.Pool,
+  FireDAC.Stan.Async,
+  FireDAC.Phys,
+  FireDAC.VCLUI.Wait,
+  FireDAC.Stan.Param,
+  FireDAC.DatS,
+  FireDAC.DApt.Intf,
+  FireDAC.DApt,
+  FireDAC.Comp.Client,
+  Data.DB,
+  FireDAC.Comp.DataSet,
+  FireDAC.Phys.PGDef,
+  FireDAC.Phys.PG,
+  sincronizador_server.interfaces;
+
+type
+  TConexao = class(TInterfacedObject, IConexao)
+  private
+    FConn: TFDConnection;
+    FQuery: TFDQuery;
+    FDriver: TFDPhysPgDriverLink;
+    FConf: IConfiguracao;
+
+    constructor Create;
+    destructor Destroy; override;
+  public
+    class function New: IConexao;
+
+    function SQL(Value: String): IConexao;
+    function Params(aParams: String; aValue: Variant): IConexao;
+    function Open: IConexao;
+    function ExecSQL: IConexao;
+    function DataSet: TDataSet;
+  end;
+
+implementation
+
+uses
+  System.SysUtils,
+  sincronizador_server.configuracao;
+
+constructor TConexao.Create;
+begin
+  FConn := TFDConnection.Create(nil);
+  FQuery := TFDQuery.Create(FConn);
+  FDriver := TFDPhysPgDriverLink.Create(FConn);
+  FConf := TConfiguracao.New;
+
+  FConn.Params.DriverID := FConf.DriverId;
+  FConn.Params.Database := FConf.DataBase;
+  FConn.Params.Add('Server='+FConf.Server);
+  FConn.Params.UserName := FConf.UserName;
+  FConn.Params.Password := FConf.Password;
+  FConn.Params.Add('PORT='+FConf.Port);
+  FConn.Params.Add('CharacterSet='+FConf.CharacterSet);
+  FConn.Params.Add('MetaDefSchema='+FConf.MetaDefSchema);
+  FConn.Connected;
+end;
+
+function TConexao.DataSet: TDataSet;
+begin
+  Result := FQuery;
+end;
+
+destructor TConexao.Destroy;
+begin
+  FConn.Free;
+  inherited;
+end;
+
+function TConexao.ExecSQL: IConexao;
+begin
+  Result := Self;
+  FQuery.Connection.StartTransaction;
+  try
+    FQuery.ExecSQL;
+    FQuery.Connection.Commit;
+  except
+    begin
+      FQuery.Connection.Rollback;
+      raise Exception.Create('Não foi possivel persistir os dados');
+    end;
+  end;
+end;
+
+class function TConexao.New: IConexao;
+begin
+  Result := Self.Create;
+end;
+
+function TConexao.Open: IConexao;
+begin
+  Result := Self;
+  try
+    FQuery.Open;
+  except
+    raise Exception.Create('Erro ao execução a ação');
+  end;
+end;
+
+function TConexao.Params(aParams: String; aValue: Variant): IConexao;
+begin
+  Result := Self;
+  FQuery.Params.Add;
+  FQuery.ParamByName(aParams).Value := aValue;
+end;
+
+function TConexao.SQL(Value: String): IConexao;
+begin
+  Result := Self;
+  FQuery.SQL.Clear;
+  FQuery.SQL.Add(Value);
+end;
+
+end.

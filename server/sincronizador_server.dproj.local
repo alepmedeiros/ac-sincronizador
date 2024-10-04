@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2024/03/07 09:23:00.000.809,=C:\repositorio\Unit4.pas</Transaction>
+    <Transaction>2024/03/07 09:23:19.000.137,C:\repositorio\sincronizador_server.dproj=C:\repositorio\Project1.dproj</Transaction>
+    <Transaction>2024/03/07 09:28:30.000.007,C:\repositorio\ac-sincronizador\server\Unit4.dfm=C:\repositorio\Unit4.dfm</Transaction>
+    <Transaction>2024/03/07 09:28:30.000.007,C:\repositorio\ac-sincronizador\server\Unit4.pas=C:\repositorio\Unit4.pas</Transaction>
+    <Transaction>2024/03/07 09:28:31.000.897,C:\repositorio\ac-sincronizador\server\sincronizador_server.dproj=C:\repositorio\sincronizador_server.dproj</Transaction>
+    <Transaction>2024/03/07 09:28:46.000.662,=C:\repositorio\ac-sincronizador\server\Unit5.pas</Transaction>
+    <Transaction>2024/03/07 09:29:51.000.357,=C:\repositorio\ac-sincronizador\server\Unit6.pas</Transaction>
+    <Transaction>2024/03/07 09:37:56.000.601,C:\repositorio\ac-sincronizador\server\sincronizador_server.interfaces.pas=C:\repositorio\ac-sincronizador\server\Unit6.pas</Transaction>
+    <Transaction>2024/03/07 09:38:02.000.739,=C:\repositorio\ac-sincronizador\server\Unit6.pas</Transaction>
+    <Transaction>2024/03/07 09:42:37.000.053,C:\repositorio\ac-sincronizador\server\sincronizador_server.conexao.pas=C:\repositorio\ac-sincronizador\server\Unit6.pas</Transaction>
+    <Transaction>2024/03/07 09:42:43.000.424,=C:\repositorio\ac-sincronizador\server\Unit6.pas</Transaction>
+    <Transaction>2024/03/07 09:43:46.000.168,C:\repositorio\ac-sincronizador\server\sincronizador_server.configuracao.pas=C:\repositorio\ac-sincronizador\server\Unit6.pas</Transaction>
+    <Transaction>2024/03/07 09:48:42.000.947,=C:\repositorio\ac-sincronizador\server\sincronizador_server.conexao.pas</Transaction>
+    <Transaction>2024/03/07 09:48:44.000.408,=C:\repositorio\ac-sincronizador\server\sincronizador_server.interfaces.pas</Transaction>
+    <Transaction>2024/03/07 09:48:44.000.356,=C:\repositorio\ac-sincronizador\server\sincronizador_server.configuracao.pas</Transaction>
+    <Transaction>2024/03/07 10:14:03.000.696,=C:\repositorio\ac-sincronizador\server\Unit5.pas</Transaction>
+    <Transaction>2024/03/07 10:17:24.000.264,C:\repositorio\ac-sincronizador\server\Unit5.pas=C:\repositorio\ac-sincronizador\server\sincronizador_server.ports.pas</Transaction>
+    <Transaction>2024/03/07 10:20:49.000.175,=C:\repositorio\ac-sincronizador\server\Unit5.pas</Transaction>
+    <Transaction>2024/03/07 10:34:06.000.938,C:\repositorio\ac-sincronizador\server\Unit5.pas=C:\repositorio\ac-sincronizador\server\sincronizador_server.formconfiguracao.pas</Transaction>
+    <Transaction>2024/03/07 10:34:06.000.938,C:\repositorio\ac-sincronizador\server\Unit5.dfm=C:\repositorio\ac-sincronizador\server\sincronizador_server.formconfiguracao.dfm</Transaction>
+    <Transaction>2024/03/07 11:03:14.000.981,=C:\repositorio\ac-sincronizador\server\Unit5.pas</Transaction>
+    <Transaction>2024/03/07 11:04:45.000.764,C:\repositorio\ac-sincronizador\server\Unit5.pas=C:\repositorio\ac-sincronizador\server\sincronizador_server.controller.pas</Transaction>
+  </Transactions>
+</BorlandProject>

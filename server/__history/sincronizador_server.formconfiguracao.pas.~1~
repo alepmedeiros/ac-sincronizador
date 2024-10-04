@@ -1,0 +1,60 @@
+unit sincronizador_server.formconfiguracao;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls;
+
+type
+  TForm5 = class(TForm)
+    Panel1: TPanel;
+    Panel2: TPanel;
+    Label1: TLabel;
+    edtServer: TEdit;
+    Panel3: TPanel;
+    Label2: TLabel;
+    edtDataBase: TEdit;
+    Panel4: TPanel;
+    Panel5: TPanel;
+    Label3: TLabel;
+    Edit1: TEdit;
+    Panel6: TPanel;
+    Label4: TLabel;
+    Edit2: TEdit;
+    Panel7: TPanel;
+    Panel8: TPanel;
+    Label5: TLabel;
+    Edit3: TEdit;
+    Panel9: TPanel;
+    Label6: TLabel;
+    Edit4: TEdit;
+    Panel10: TPanel;
+    Label7: TLabel;
+    Edit5: TEdit;
+    Panel11: TPanel;
+    Panel12: TPanel;
+    Label8: TLabel;
+    Edit6: TEdit;
+    Panel13: TPanel;
+    Label9: TLabel;
+    Edit7: TEdit;
+    Panel14: TPanel;
+    Label10: TLabel;
+    Edit8: TEdit;
+    Panel15: TPanel;
+    Button1: TButton;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form5: TForm5;
+
+implementation
+
+{$R *.dfm}
+
+end.

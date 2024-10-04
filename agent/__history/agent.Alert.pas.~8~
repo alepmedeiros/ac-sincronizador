@@ -1,0 +1,86 @@
+unit agent.Alert;
+
+interface
+
+uses
+  agent.interfaces,
+  FireDAC.Comp.Client;
+
+type
+  IAlerts = interface
+    function Names(Value: String): IAlerts;
+    function Sincronizador(Ip: String): IAlerts;
+    function PostEvent(Value: String): IAlerts;
+    function RegistrarEvento: IAlerts;
+  end;
+
+  TAlerts = class(TInterfacedObject, IAlerts)
+  private
+    FDEventAlerter: TFDEventAlerter;
+
+
+    procedure Alert(ASender: TFDCustomEventAlerter;
+  const AEventName: string; const AArgument: Variant);
+
+    constructor Create(Conexao: TFDConnection);
+    destructor Destroy; override;
+  public
+    class function New(Conexao: TFDConnection): IAlerts;
+
+    function Names(Value: String): IAlerts;
+    function PostEvent(Value: String): IAlerts;
+    function RegistrarEvento: IAlerts;
+  end;
+
+implementation
+
+uses
+ System.Variants,
+ RESTRequest4D,
+ agent.ports;
+
+procedure TAlerts.Alert(ASender: TFDCustomEventAlerter;
+  const AEventName: string; const AArgument: Variant);
+begin
+  PostEvent(AEventName);
+end;
+
+constructor TAlerts.Create(Conexao: TFDConnection);
+begin
+  FDEventAlerter := TFDEventAlerter.Create(nil);
+  FDEventAlerter.Connection := Conexao;
+end;
+
+destructor TAlerts.Destroy;
+begin
+  FDEventAlerter.Free;
+  inherited;
+end;
+
+function TAlerts.Names(Value: String): IAlerts;
+begin
+  Result := Self;
+  FDEventAlerter.Names.Add(Value);
+end;
+
+class function TAlerts.New(Conexao: TFDConnection): IAlerts;
+begin
+  Result := Self.Create(Conexao);
+end;
+
+function TAlerts.PostEvent(Value: String): IAlerts;
+begin
+  Result := Self;
+
+end;
+
+function TAlerts.RegistrarEvento: IAlerts;
+begin
+  FDEventAlerter.Active := True;
+  FDEventAlerter.Options.Kind := '';
+  FDEventAlerter.Options.Synchronize := True;
+  FDEventAlerter.OnAlert := Alert;
+  FDEventAlerter.Register;
+end;
+
+end.
